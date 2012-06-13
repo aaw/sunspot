@@ -82,6 +82,7 @@ module Sunspot #:nodoc:
         @port
       end
 
+
       #
       # The scheme to use, http or https.
       # Defaults to http
@@ -97,23 +98,6 @@ module Sunspot #:nodoc:
           @scheme ||= default_scheme
         end
         @scheme
-      end
-
-      #
-      # The userinfo used for authentication, a colon-delimited string like "user:pass"
-      # Defaults to nil, which means no authentication
-      #
-      # ==== Returns
-      #
-      # String:: userinfo
-      #
-      def userinfo
-        unless defined?(@userinfo)
-          @userinfo   = solr_url.userinfo
-          @userinfo ||= user_configuration_from_key('solr', 'userinfo')
-          @userinfo ||= default_userinfo
-        end
-        @userinfo
       end
 
       #
@@ -379,10 +363,6 @@ module Sunspot #:nodoc:
       
       def default_scheme
         'http'
-      end
-
-      def default_userinfo
-        nil
       end
 
       def default_path
