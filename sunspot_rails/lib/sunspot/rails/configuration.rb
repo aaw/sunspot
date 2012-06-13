@@ -109,7 +109,7 @@ module Sunspot #:nodoc:
       #
       def userinfo
         unless defined?(@userinfo)
-          @userinfo   = solr_url.userinfo
+          @userinfo   = solr_url.userinfo if solr_url
           @userinfo ||= user_configuration_from_key('solr', 'userinfo')
           @userinfo ||= default_userinfo
         end
